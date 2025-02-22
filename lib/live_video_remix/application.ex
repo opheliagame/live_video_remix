@@ -9,7 +9,7 @@ defmodule LiveVideoRemix.Application do
   def start(_type, _args) do
     children = [
       LiveVideoRemixWeb.Telemetry,
-      LiveVideoRemix.Repo,
+      # LiveVideoRemix.Repo,
       {DNSCluster, query: Application.get_env(:live_video_remix, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: LiveVideoRemix.PubSub},
       # Start the Finch HTTP client for sending emails
@@ -17,7 +17,11 @@ defmodule LiveVideoRemix.Application do
       # Start a worker by calling: LiveVideoRemix.Worker.start_link(arg)
       # {LiveVideoRemix.Worker, arg},
       # Start to serve requests, typically the last entry
-      LiveVideoRemixWeb.Endpoint
+      LiveVideoRemixWeb.Endpoint,
+      LiveVideoRemixWeb.Presence,
+      LiveVideoRemix.PeerSupervisor,
+      LiveVideoRemix.Room,
+      {Registry, name: LiveVideoRemix.PeerRegistry, keys: :unique}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

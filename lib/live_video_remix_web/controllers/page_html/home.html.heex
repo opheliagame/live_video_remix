@@ -2,6 +2,41 @@
 <div class="px-4 py-10 sm:px-6 sm:py-28 lg:px-8 xl:px-28 xl:py-32">
   <h1>welcome to live video remix app</h1>
 
-  <video id="videoElement" autoplay></video>
+  <hr />
+
+  <div class="flex gap-4 flex-wrap py-4">
+    <button id="capture-stream-button" class="border border-1">
+      start capture
+    </button>
+
+    <button id="start-stream-button" class="border border-1">
+      start streaming
+    </button>
+
+    <button id="end-stream-button" class="border border-1">
+      end streaming
+    </button>
+
+    <button id="start-watch-button" class="border border-1">
+      start watching
+    </button>
+  </div>
+
+  <hr />
+
+  <p>viewers : <span id="viewercount">viewer count</span></p>
+
+  <hr />
+
+  <div class="flex flex-row w-full flex-nowrap">
+    <video class="w-1/2 flex-initial" id="videoElement" autoplay></video>
+    <div class="w-1/2 flex-initial">
+      <canvas class="w-full h-full" id="canvasOutput"></canvas>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="flex flex-row w-full flex-nowrap" id="streamVideoElement"></div>
   <hr />
 </div>
